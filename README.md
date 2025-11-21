@@ -1,4 +1,7 @@
-# P2P Alarm Web App
+# P2P Alarm Web App 🚨
+
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://srini-abhiram.github.io/p2p-alarm-app/)
+
 
 A secure, client-side-only web application that allows you to send instant alarm notifications to your friends and family directly through the browser. Built with privacy and simplicity in mind, this app leverages WebRTC (via PeerJS magic) to establish direct peer-to-peer connections without storing any data on a central server.
 
