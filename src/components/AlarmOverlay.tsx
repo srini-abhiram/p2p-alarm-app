@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { BellOff, AlertTriangle } from 'lucide-react';
 
 interface AlarmOverlayProps {
@@ -8,7 +8,7 @@ interface AlarmOverlayProps {
 }
 
 export const AlarmOverlay: React.FC<AlarmOverlayProps> = ({ onStop, message, senderName }) => {
-    const audioRef = useRef<HTMLAudioElement | null>(null);
+
 
     useEffect(() => {
         // Create audio context for alarm sound

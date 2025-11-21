@@ -2,6 +2,8 @@
 
 A secure, client-side-only web application that allows you to send instant alarm notifications to your friends and family directly through the browser. Built with privacy and simplicity in mind, this app leverages WebRTC (via PeerJS magic) to establish direct peer-to-peer connections without storing any data on a central server.
 
+> **⚠️ WARNING**: The alarm sound is designed to be **loud** and attention-grabbing. Please ensure your device volume is set appropriately before testing. If you do not hear the alarm, please check your system volume and ensure the browser tab is active or has permission to play sound.
+
 ![P2P Alarm Dashboard](src/assets/home.png)
 
 ## Key Features

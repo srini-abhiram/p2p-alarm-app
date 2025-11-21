@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { usePeer } from './context/PeerContext';
 import { Dashboard } from './components/Dashboard';
 import { AlarmOverlay } from './components/AlarmOverlay';

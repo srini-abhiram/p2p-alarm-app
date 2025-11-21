@@ -33,7 +33,7 @@ class PeerService {
     onHandshakeCallback: ((peerId: string, username: string) => void) | null = null;
 
     initialize(id: string): Promise<string> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.id = id;
             this.peer = new Peer(id, {
                 debug: 2,
@@ -51,7 +51,6 @@ class PeerService {
 
             this.peer.on('error', (err: any) => {
                 console.error('PeerJS error:', err);
-                // We might want to expose this error to the UI
             });
         });
     }
@@ -98,14 +97,25 @@ class PeerService {
     handleConnection(conn: DataConnection) {
         this.connections.set(conn.peer, conn);
 
-        // Send handshake immediately
-        if (this.username) {
-            const handshake: HandshakeData = {
-                type: 'HANDSHAKE',
-                from: this.id,
-                username: this.username
-            };
-            conn.send(handshake);
+        const sendHandshake = () => {
+            if (this.username) {
+                console.log('Sending handshake to:', conn.peer);
+                const handshake: HandshakeData = {
+                    type: 'HANDSHAKE',
+                    from: this.id,
+                    username: this.username
+                };
+                conn.send(handshake);
+            }
+        };
+
+        if (conn.open) {
+            sendHandshake();
+        } else {
+            conn.on('open', () => {
+                console.log('Connection opened for handshake:', conn.peer);
+                sendHandshake();
+            });
         }
 
         if (this.onConnectionCallback) {
